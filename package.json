@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "dev": "ts-node src/server.ts",
-  "start": "ts-node src/server.ts"
-
+    "dev": "ts-node src/server.ts",
+    "start": "ts-node src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +15,8 @@
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.16.4"
+    "mongoose": "^8.16.4",
+    "zod": "^4.0.10"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

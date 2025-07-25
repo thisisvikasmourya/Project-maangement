@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 
 import { connectDB } from './config/db';
+import authRoutes from './routes/auth.routes';
 import bookRoutes from './routes/bookRoutes';
 
 dotenv.config();
@@ -11,5 +12,6 @@ const app = express();
 
 app.use(express.json());
 app.use('/api/books', bookRoutes);
+app.use('/api/auth', authRoutes);
 
 export default app;
