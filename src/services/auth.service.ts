@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 import {
   LoginInput,
   RegisterInput,
-} from '../types/user.types';
+} from '../utils/user.types';
 
 export const registerUser = async(data:RegisterInput)=>{
     const existing = await User.findOne({email:data.email})
@@ -32,6 +32,7 @@ export const loginUser = async(data:LoginInput)=>{
     const token = Jwt.sign({
         id:existingUser._id,
         email:existingUser.email,
+        role:existingUser.role
     },process.env.SECRET_TOKEN!,{expiresIn:"1d"})
 
     return {token,email:existingUser.email}

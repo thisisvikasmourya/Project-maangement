@@ -3,7 +3,8 @@ import {
   Response,
 } from 'express';
 
-import { AuthRequest } from '../middlewares/auth.middleware';
+import { AuthenticatedRequest } from '../../types/express';
+// import { AuthenticatedRequest } from '../middlewares/auth.middleware';
 import {
   getProfile,
   loginUser,
@@ -45,9 +46,10 @@ export const loginController = async(req:Request,res:Response)=>{
     }
 }
 
-export const getProfileController = async (req: AuthRequest, res: Response) => {
+export const getProfileController = async (req: AuthenticatedRequest, res: Response) => {
+  const userId = req.user?.id!
   try {
-    const user = await getProfile(req.user?.id!)
+    const user = await getProfile(userId)
     res.status(200).json({ user })
   } catch (err: any) {
     res.status(400).json({ error: err.message })
