@@ -1,13 +1,23 @@
 import { Router } from 'express';
 
-import { createProject } from '../controllers/project.controller';
+import {
+  createProject,
+  deleteProject,
+  projectLists,
+  updateProject,
+} from '../controllers/project.controller';
 import { authenticate } from '../middlewares/auth.middleware';
+
+// import { getProjectsList } from '../services/project.service';
 
 const router = Router()
 
 router.post("/", authenticate, createProject)
 
-// router.get("/:id", authenticate, getUserById);
+router.get("/", authenticate, projectLists);
+router.patch("/:id", authenticate, updateProject);
+router.delete("/:id", authenticate, deleteProject);
+
 // router.patch("/:id", authenticate, updateUserById);
 // router.delete("/:id", authenticate, deleteUserById);
 // router.patch("/:id/role", authenticate, updateUserRole);
